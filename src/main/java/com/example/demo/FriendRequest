@@ -1,0 +1,91 @@
+package com.example.demo;
+import java.util.Objects;
+
+public class FriendRequest {
+    private User sender;
+    private User receiver;
+    private String message;
+    private int id;
+    private String status;
+
+
+    public FriendRequest(User sender, User receiver,String status) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.status=status;
+        this.message = "Hey there u received a friend request!";
+    }
+    public FriendRequest(int id, User sender, User receiver) {
+        this.id = id;
+        this.sender = sender;
+        this.receiver = receiver;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+ 
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSenderId() {
+        return sender.getId();
+    }
+
+    public void setSenderId(int senderId) {
+        this.sender.setId(senderId);
+    }
+
+    public int getReceiverId() {
+        return receiver.getId();
+    }
+
+    public void setReceiverId(int receiverId) {
+        this.receiver.setId(receiverId);
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "FriendRequest{" +
+                "sender=" + sender.getUsername() +
+                ", receiver=" + receiver.getUsername() +
+                ", message='" + message + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FriendRequest that = (FriendRequest) o;
+        return sender.equals(that.sender) &&
+                receiver.equals(that.receiver) &&
+                message.equals(that.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sender, receiver, message);
+    }
+}
+
